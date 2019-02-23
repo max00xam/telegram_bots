@@ -56,8 +56,8 @@ def bot_teamwatch(bot, update):
         print "result: %s" % res
     
 def bot_twadmin(bot, update):
-    if update.message.from_user.username == "max00xam":
-        url = "https://www.teamwatch.it/add.php?%s" % 'user=654321&text=' + urllib2.quote(update.message.text[9:].encode('UTF-8'))    
+    if update.message.from_user.username == "<insert admin username>":
+        url = "https://www.teamwatch.it/add.php?%s" % 'user=<insert teamwatch id>&text=' + urllib2.quote(update.message.text[9:].encode('UTF-8'))    
         print url
         res = ""
         try:
@@ -69,7 +69,7 @@ def bot_twadmin(bot, update):
     else:
         update.message.reply_text("e mica lo possono fare tutti... bisogna essere admin!")
         
-updater = Updater('707109367:AAGvyAoJl9wauukg1BPmJG8sFkLIpzHGCaU') # bot_tana_new_bot
+updater = Updater('<insert the bot id from telegram>') # bot_tana_new_bot
 
 updater.dispatcher.add_handler(CommandHandler('quanto', bot_quanto))
 updater.dispatcher.add_handler(CommandHandler('quanto?', bot_quanto))
