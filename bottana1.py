@@ -44,31 +44,6 @@ def bot_promo(bot, update):
 def bot_help(bot, update):
     update.message.reply_text("bot_tana i comandi sono:\n    /quanto?\n    /quanto prendi?\n    /dove?\n    /dove sei?\n    /dove ricevi?\n    /libera?\n    /sei libera?\n    /promo")
     
-def bot_teamwatch(bot, update):
-    url = "http://www.teamwatch.it/add.php?%s" % 'user=' + urllib2.quote(update.message.from_user.username.encode('UTF-8')) + '&text=' + urllib2.quote(update.message.text[11:].encode('UTF-8'))    
-    print url
-    res = ""
-    try:
-        res = urllib.urlopen(url)
-    except:
-        print "error opening %s" % url
-    finally:
-        print "result: %s" % res
-    
-def bot_twadmin(bot, update):
-    if update.message.from_user.username == "<insert admin username>":
-        url = "https://www.teamwatch.it/add.php?%s" % 'user=<insert teamwatch id>&text=' + urllib2.quote(update.message.text[9:].encode('UTF-8'))    
-        print url
-        res = ""
-        try:
-            res = urllib.urlopen(url)
-        except:
-            print "error opening %s" % url
-        finally:
-            print "result: %s" % res
-    else:
-        update.message.reply_text("e mica lo possono fare tutti... bisogna essere admin!")
-        
 updater = Updater('<insert the bot id from telegram>') # bot_tana_new_bot
 
 updater.dispatcher.add_handler(CommandHandler('quanto', bot_quanto))
@@ -80,8 +55,6 @@ updater.dispatcher.add_handler(CommandHandler('libera', bot_libera))
 updater.dispatcher.add_handler(CommandHandler('libera?', bot_libera))
 updater.dispatcher.add_handler(CommandHandler('promo', bot_promo))
 updater.dispatcher.add_handler(CommandHandler('help', bot_help))
-updater.dispatcher.add_handler(CommandHandler('teamwatch', bot_teamwatch))
-updater.dispatcher.add_handler(CommandHandler('twadmin', bot_twadmin))
 
 updater.start_polling()
 updater.idle()
